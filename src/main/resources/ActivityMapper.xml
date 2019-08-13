@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xx.mybatis.generator.mapper.ActivityMapper">
+
+    <resultMap type="com.xx.mybatis.generator.domain.ActivityDO" id="activityMap">
+            <result property="id" column="id"/>
+            <result property="activityId" column="activity_id"/>
+            <result property="activityName" column="activity_name"/>
+            <result property="activityType" column="activity_type"/>
+            <result property="activityStatus" column="activity_status"/>
+            <result property="isDelete" column="is_delete"/>
+            <result property="tag" column="tag"/>
+            <result property="gmtCreate" column="gmt_create"/>
+            <result property="gmtModified" column="gmt_modified"/>
+            <result property="isDirectMedia" column="is_direct_media"/>
+            <result property="isDirectAdvert" column="is_direct_advert"/>
+            <result property="directAdvertMode" column="direct_advert_mode"/>
+            <result property="isPublish" column="is_publish"/>
+            <result property="isEnable" column="is_enable"/>
+            <result property="activityMsList" column="activity_ms_list"/>
+            <result property="isNewAct" column="is_new_act"/>
+            <result property="source" column="source"/>
+            <result property="description" column="description"/>
+            <result property="planTitle" column="plan_title"/>
+            <result property="subType" column="sub_type"/>
+            <result property="cronExpression" column="cron_expression"/>
+            <result property="cronType" column="cron_type"/>
+            <result property="overseas" column="overseas"/>
+    </resultMap>
+
+    <sql id="columns"> id
+            ,activity_id
+            ,activity_name
+            ,activity_type
+            ,activity_status
+            ,is_delete
+            ,tag
+            ,gmt_create
+            ,gmt_modified
+            ,is_direct_media
+            ,is_direct_advert
+            ,direct_advert_mode
+            ,is_publish
+            ,is_enable
+            ,activity_ms_list
+            ,is_new_act
+            ,source
+            ,description
+            ,plan_title
+            ,sub_type
+            ,cron_expression
+            ,cron_type
+            ,overseas </sql>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.xx.mybatis.generator.domain.ActivityDO">
+        INSERT INTO tuia_media.tb_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="activityId != null">
+                    activity_id,
+                </if>
+                <if test="activityName != null">
+                    activity_name,
+                </if>
+                <if test="activityType != null">
+                    activity_type,
+                </if>
+                <if test="activityStatus != null">
+                    activity_status,
+                </if>
+                <if test="isDelete != null">
+                    is_delete,
+                </if>
+                <if test="tag != null">
+                    tag,
+                </if>
+                <if test="isDirectMedia != null">
+                    is_direct_media,
+                </if>
+                <if test="isDirectAdvert != null">
+                    is_direct_advert,
+                </if>
+                <if test="directAdvertMode != null">
+                    direct_advert_mode,
+                </if>
+                <if test="isPublish != null">
+                    is_publish,
+                </if>
+                <if test="isEnable != null">
+                    is_enable,
+                </if>
+                <if test="activityMsList != null">
+                    activity_ms_list,
+                </if>
+                <if test="isNewAct != null">
+                    is_new_act,
+                </if>
+                <if test="source != null">
+                    source,
+                </if>
+                <if test="description != null">
+                    description,
+                </if>
+                <if test="planTitle != null">
+                    plan_title,
+                </if>
+                <if test="subType != null">
+                    sub_type,
+                </if>
+                <if test="cronExpression != null">
+                    cron_expression,
+                </if>
+                <if test="cronType != null">
+                    cron_type,
+                </if>
+                <if test="overseas != null">
+                    overseas,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="activityId != null">
+                    #{activityId},
+                </if>
+                <if test="activityName != null">
+                    #{activityName},
+                </if>
+                <if test="activityType != null">
+                    #{activityType},
+                </if>
+                <if test="activityStatus != null">
+                    #{activityStatus},
+                </if>
+                <if test="isDelete != null">
+                    #{isDelete},
+                </if>
+                <if test="tag != null">
+                    #{tag},
+                </if>
+                <if test="isDirectMedia != null">
+                    #{isDirectMedia},
+                </if>
+                <if test="isDirectAdvert != null">
+                    #{isDirectAdvert},
+                </if>
+                <if test="directAdvertMode != null">
+                    #{directAdvertMode},
+                </if>
+                <if test="isPublish != null">
+                    #{isPublish},
+                </if>
+                <if test="isEnable != null">
+                    #{isEnable},
+                </if>
+                <if test="activityMsList != null">
+                    #{activityMsList},
+                </if>
+                <if test="isNewAct != null">
+                    #{isNewAct},
+                </if>
+                <if test="source != null">
+                    #{source},
+                </if>
+                <if test="description != null">
+                    #{description},
+                </if>
+                <if test="planTitle != null">
+                    #{planTitle},
+                </if>
+                <if test="subType != null">
+                    #{subType},
+                </if>
+                <if test="cronExpression != null">
+                    #{cronExpression},
+                </if>
+                <if test="cronType != null">
+                    #{cronType},
+                </if>
+                <if test="overseas != null">
+                    #{overseas},
+                </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM tuia_media.tb_activity WHERE id=#{id}
+    </delete>
+
+    <delete id="deleteBatchById">
+        DELETE FROM tuia_media.tb_activity WHERE id IN
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <update id="updateById" parameterType="com.xx.mybatis.generator.domain.ActivityDO">
+        UPDATE tuia_media.tb_activity
+        <set>
+                    <if test="activityId != null">
+                        activity_id = #{activityId},
+                    </if>
+                    <if test="activityName != null">
+                        activity_name = #{activityName},
+                    </if>
+                    <if test="activityType != null">
+                        activity_type = #{activityType},
+                    </if>
+                    <if test="activityStatus != null">
+                        activity_status = #{activityStatus},
+                    </if>
+                    <if test="isDelete != null">
+                        is_delete = #{isDelete},
+                    </if>
+                    <if test="tag != null">
+                        tag = #{tag},
+                    </if>
+                    <if test="isDirectMedia != null">
+                        is_direct_media = #{isDirectMedia},
+                    </if>
+                    <if test="isDirectAdvert != null">
+                        is_direct_advert = #{isDirectAdvert},
+                    </if>
+                    <if test="directAdvertMode != null">
+                        direct_advert_mode = #{directAdvertMode},
+                    </if>
+                    <if test="isPublish != null">
+                        is_publish = #{isPublish},
+                    </if>
+                    <if test="isEnable != null">
+                        is_enable = #{isEnable},
+                    </if>
+                    <if test="activityMsList != null">
+                        activity_ms_list = #{activityMsList},
+                    </if>
+                    <if test="isNewAct != null">
+                        is_new_act = #{isNewAct},
+                    </if>
+                    <if test="source != null">
+                        source = #{source},
+                    </if>
+                    <if test="description != null">
+                        description = #{description},
+                    </if>
+                    <if test="planTitle != null">
+                        plan_title = #{planTitle},
+                    </if>
+                    <if test="subType != null">
+                        sub_type = #{subType},
+                    </if>
+                    <if test="cronExpression != null">
+                        cron_expression = #{cronExpression},
+                    </if>
+                    <if test="cronType != null">
+                        cron_type = #{cronType},
+                    </if>
+                    <if test="overseas != null">
+                        overseas = #{overseas},
+                    </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <select id="getById" resultMap="activityMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tuia_media.tb_activity
+        WHERE id = #{id}
+    </select>
+
+    <select id="listById" resultMap="activityMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tuia_media.tb_activity
+        WHERE id IN
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+        <select id="getByActivitySource" resultMap="activityMap">
+            SELECT
+            <include refid="columns"/>
+            FROM tuia_media.tb_activity
+            WHERE activity_id=#{activityId} and activity_type=#{activityType} and source=#{source}
+        </select>
+
+        <select id="listByActivitySource" resultMap="activityMap">
+            SELECT
+            <include refid="columns"/>
+            FROM tuia_media.tb_activity
+            WHERE
+                activity_id IN
+                <foreach item="item" index="index" collection="activityIds" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                 and 
+                activity_type IN
+                <foreach item="item" index="index" collection="activityTypes" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                 and 
+                source IN
+                <foreach item="item" index="index" collection="sources" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+                
+        </select>
+
+    <select id="listByParam" resultMap="activityMap" parameterType="java.util.Map">
+        SELECT
+        <include refid="columns"/>
+        FROM tuia_media.tb_activity
+        <where>
+                <if test="activityId !=null">
+                    AND activity_id = #{activityId}
+                </if>
+                <if test="activityName !=null">
+                    AND activity_name = #{activityName}
+                </if>
+                <if test="activityType !=null">
+                    AND activity_type = #{activityType}
+                </if>
+                <if test="activityStatus !=null">
+                    AND activity_status = #{activityStatus}
+                </if>
+                <if test="isDelete !=null">
+                    AND is_delete = #{isDelete}
+                </if>
+                <if test="tag !=null">
+                    AND tag = #{tag}
+                </if>
+                <if test="isDirectMedia !=null">
+                    AND is_direct_media = #{isDirectMedia}
+                </if>
+                <if test="isDirectAdvert !=null">
+                    AND is_direct_advert = #{isDirectAdvert}
+                </if>
+                <if test="directAdvertMode !=null">
+                    AND direct_advert_mode = #{directAdvertMode}
+                </if>
+                <if test="isPublish !=null">
+                    AND is_publish = #{isPublish}
+                </if>
+                <if test="isEnable !=null">
+                    AND is_enable = #{isEnable}
+                </if>
+                <if test="activityMsList !=null">
+                    AND activity_ms_list = #{activityMsList}
+                </if>
+                <if test="isNewAct !=null">
+                    AND is_new_act = #{isNewAct}
+                </if>
+                <if test="source !=null">
+                    AND source = #{source}
+                </if>
+                <if test="description !=null">
+                    AND description = #{description}
+                </if>
+                <if test="planTitle !=null">
+                    AND plan_title = #{planTitle}
+                </if>
+                <if test="subType !=null">
+                    AND sub_type = #{subType}
+                </if>
+                <if test="cronExpression !=null">
+                    AND cron_expression = #{cronExpression}
+                </if>
+                <if test="cronType !=null">
+                    AND cron_type = #{cronType}
+                </if>
+                <if test="overseas !=null">
+                    AND overseas = #{overseas}
+                </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="countByParam" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(*)
+        FROM tuia_media.tb_activity
+        <where>
+                <if test="activityId !=null">
+                    AND activity_id = #{activityId}
+                </if>
+                <if test="activityName !=null">
+                    AND activity_name = #{activityName}
+                </if>
+                <if test="activityType !=null">
+                    AND activity_type = #{activityType}
+                </if>
+                <if test="activityStatus !=null">
+                    AND activity_status = #{activityStatus}
+                </if>
+                <if test="isDelete !=null">
+                    AND is_delete = #{isDelete}
+                </if>
+                <if test="tag !=null">
+                    AND tag = #{tag}
+                </if>
+                <if test="isDirectMedia !=null">
+                    AND is_direct_media = #{isDirectMedia}
+                </if>
+                <if test="isDirectAdvert !=null">
+                    AND is_direct_advert = #{isDirectAdvert}
+                </if>
+                <if test="directAdvertMode !=null">
+                    AND direct_advert_mode = #{directAdvertMode}
+                </if>
+                <if test="isPublish !=null">
+                    AND is_publish = #{isPublish}
+                </if>
+                <if test="isEnable !=null">
+                    AND is_enable = #{isEnable}
+                </if>
+                <if test="activityMsList !=null">
+                    AND activity_ms_list = #{activityMsList}
+                </if>
+                <if test="isNewAct !=null">
+                    AND is_new_act = #{isNewAct}
+                </if>
+                <if test="source !=null">
+                    AND source = #{source}
+                </if>
+                <if test="description !=null">
+                    AND description = #{description}
+                </if>
+                <if test="planTitle !=null">
+                    AND plan_title = #{planTitle}
+                </if>
+                <if test="subType !=null">
+                    AND sub_type = #{subType}
+                </if>
+                <if test="cronExpression !=null">
+                    AND cron_expression = #{cronExpression}
+                </if>
+                <if test="cronType !=null">
+                    AND cron_type = #{cronType}
+                </if>
+                <if test="overseas !=null">
+                    AND overseas = #{overseas}
+                </if>
+        </where>
+    </select>
+
+</mapper>
